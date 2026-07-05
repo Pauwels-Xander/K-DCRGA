@@ -1,0 +1,9 @@
+# K-DCRGA + DEDICOM: the v5 encoder (R-GCN + doubly-cond attention + rotatory +
+# shared view + ontology injection) with its shared-MLP scorer REPLACED by
+# Decagon's DEDICOM decoder (per-SE diagonal d_k + shared global R). Isolates the
+# encoder contribution by holding the decoder identical to the Decagon baseline.
+# use_hierarchical is inherited from v5 but ignored by KDCRGADedicom (no aggregator).
+base: kdcrga_v5.yaml
+
+output:
+  checkpoint_dir: runs/kdcrga_dedicom_v1

@@ -1,0 +1,7 @@
+# 1-epoch smoke of the RQ5 zero-shot pipeline (plumbing check only — NOT a result).
+# Run with --runs-root pointing at a scratch dir so it never pollutes the real run.
+base: rq5_dedicom_v5.yaml
+
+training:
+  max_epochs: 1
+  early_stop_patience: 1

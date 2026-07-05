@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kdcrga"
+version = "0.1.0"
+description = "Knowledge-Injected Doubly-Conditional Rotatory Graph Attention for polypharmacy ADE prediction"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Xander Pauwels" }]
+dependencies = [
+    "torch>=2.2",
+    "torch-geometric>=2.5",
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "scikit-learn>=1.3",
+    "pandas>=2.0",
+    "pyyaml>=6.0",
+    "tqdm>=4.65",
+    "networkx>=3.1",
+    "rapidfuzz>=3.0",      # fuzzy MedDRA name matching (difflib fallback in match.py)
+    "tensorboard>=2.15",
+]
+
+[project.optional-dependencies]
+embeddings = [
+    "transformers>=4.40",  # BioBERT for MedDRA z_k init + protein/gene init
+    "rdkit>=2023.9",       # Mol2Vec drug fingerprints
+    "gensim>=4.3",         # Mol2Vec model loading
+]
+viz = [
+    "matplotlib>=3.7",     # vector-PDF thesis figures (eval/figures.py)
+]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.4",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

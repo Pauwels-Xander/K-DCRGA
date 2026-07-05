@@ -1,0 +1,14 @@
+# K-DCRGA v4: encoder + doubly-cond attention + rotatory + shared view +
+# hierarchical aggregator. v5 (ontology injection) requires real MedDRA/ATC
+# data, wired separately when that data lands.
+base: base.yaml
+
+model:
+  num_hops: 3
+  use_shared_view: true
+  use_hierarchical: true
+
+training:
+  max_epochs: 30
+  early_stop_patience: 10
+  batch_size: 128        # 5-view model: bs=256 peaks 8.25-8.60GB (OOMs w/ full val); 128 -> ~6GB (preflight 2026-06-08)

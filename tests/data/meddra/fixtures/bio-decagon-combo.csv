@@ -1,0 +1,4 @@
+STITCH 1,STITCH 2,Polypharmacy Side Effect,Side Effect Name
+CID000002173,CID000003345,C0014863,enteritis
+CID000002173,CID000003345,C0015695,folate deficiency anaemia
+CID000002173,CID000003345,C9999999,totally unmatched gibberish term

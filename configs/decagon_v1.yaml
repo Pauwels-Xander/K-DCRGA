@@ -1,0 +1,9 @@
+# Decagon baseline (Zitnik et al. 2018) — R-GCN encoder + DEDICOM decoder.
+base: base.yaml
+
+training:
+  max_epochs: 30
+  early_stop_patience: 10
+
+output:
+  checkpoint_dir: runs/decagon_v1

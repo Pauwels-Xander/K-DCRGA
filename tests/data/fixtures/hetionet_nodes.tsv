@@ -1,0 +1,5 @@
+id	name	kind
+Gene::801	ANXA8	Gene
+Disease::DOID:9	some disease	Disease
+Symptom::D007383	fever	Symptom
+Compound::DB00813	Fentanyl	Compound

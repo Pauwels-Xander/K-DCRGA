@@ -1,0 +1,13 @@
+# K-DCRGA v5: the full headline model = v4 + ontology injection (the "K").
+# Inherits v4's architecture (num_hops=3, shared view, hierarchical aggregator)
+# and training schedule, and turns on both ontology components:
+#   - use_ontology_zk:  MedDRA-derived z_k init (Eq. zk-init); needs
+#                       data/processed/zk_init.pt (build_zk_init.py)
+#   - use_ontology_atc: ATC ancestor-node injection into the graph; needs
+#                       data/processed/atc_inject.pt (build_atc_inject.py)
+# v4 (both flags absent) is the RQ3 "no ontology injection" ablation arm.
+base: kdcrga_v4.yaml
+
+model:
+  use_ontology_zk: true
+  use_ontology_atc: true

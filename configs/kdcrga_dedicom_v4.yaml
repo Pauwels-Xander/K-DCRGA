@@ -1,0 +1,9 @@
+# K-DCRGA + DEDICOM, v4 encoder (NO ontology): attention + rotatory + shared view,
+# with use_ontology_zk / use_ontology_atc absent. Pairs with kdcrga_dedicom_v1
+# (v5 encoder, ontology on): v5-dedicom vs v4-dedicom isolates the ontology
+# contribution; v4-dedicom vs decagon isolates the attention contribution (both
+# lack ontology, both use the DEDICOM decoder).
+base: kdcrga_v4.yaml
+
+output:
+  checkpoint_dir: runs/kdcrga_dedicom_v4

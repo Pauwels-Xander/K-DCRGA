@@ -1,0 +1,12 @@
+# RQ3 ablation: rotatory depth n=2 (full model otherwise).
+base: ../base.yaml
+
+model:
+  num_hops: 2
+  use_shared_view: true
+  use_hierarchical: true
+
+training:
+  max_epochs: 30
+  early_stop_patience: 10
+  batch_size: 128        # full 5-view KDCRGA OOMs at 256 on 8GB; 128 profiled safe (preflight 2026-06-08)

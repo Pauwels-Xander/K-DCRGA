@@ -1,0 +1,13 @@
+# RQ5 zero-shot — headline DEDICOM v5 (attention + ATC graph + MedDRA z_k).
+# Trains on 160 side effects; evaluates zero-shot on 40 held-out SEs under three
+# held-out fills (random / global-mean / MedDRA ancestor-average).
+# batch 128 is VRAM-forced: bs256 OOMs on 8 GB once the shared two-hop view runs
+# over the ATC-enlarged graph (smoke crashed at batch 137/671). accum 1 = an
+# optimizer step every batch -> faster convergence in fewer epochs.
+base: bench/kdcrga_dedicom_v5.yaml
+
+training:
+  batch_size: 128
+  effective_batch_size: 128
+  max_epochs: 40
+  early_stop_patience: 8

@@ -1,0 +1,37 @@
+# Base configuration shared by all experiments.
+# Override per-experiment by creating a config with `base: base.yaml`.
+# Defaults follow the notation table in docs/proposal3.tex (Sec. 3.1).
+
+seed: 0
+device: cuda
+
+data:
+  graph_root: data/processed
+  ontology_root: data/ontology
+  split: { train: 0.70, val: 0.15, test: 0.15 }   # proposal Sec. 3.5; all methods re-run on this split
+  freq_quartiles: 4                                 # RQ2 stratification
+
+model:
+  hidden_dim: 128        # d   — R-GCN hidden dimension
+  z_dim: 128             # d_z — side-effect embedding dimension
+  attn_dim: 64           # d_a — attention space dimension
+  encoder_depth: 3       # L   — R-GCN layers
+  num_bases: 30          # B   — basis decomposition count
+  num_hops: 3            # n   — rotatory hops; ablated over {1, 2, 3}
+  dropout: 0.3           # tuned in [0.1, 0.5]
+
+training:
+  lr: 5.0e-4             # tuned in [1e-4, 1e-3]
+  weight_decay: 1.0e-5   # L2 regularisation lambda
+  max_epochs: 200
+  early_stop_patience: 15
+  batch_size: 1024       # drug-pair triples per step (tune down for 8 GB VRAM)
+  neg_samples_per_pos: 1
+  negative_sampling: corrupt_pair      # fix k, corrupt one drug (Decagon-style)
+  k_sampling: per_relation_batch       # one side effect per minibatch
+  class_weight_gamma: 0.5              # w_k = ((N - N^+_k)/N^+_k)^gamma; tune {0, 0.5, 1.0}
+  monitor: val_auprc
+
+eval:
+  metrics: [auroc, auprc, ap50]
+  attention_analysis: false   # enable for RQ4 runs

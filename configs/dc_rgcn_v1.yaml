@@ -1,0 +1,11 @@
+# Decoder-conditioned R-GCN — first end-to-end run on BioSNAP-200.
+# Inherits base.yaml; caps max_epochs so the run finishes in bounded wall-clock.
+# Increase max_epochs (and retighten patience) for the final RQ1 benchmark sweep.
+base: base.yaml
+
+training:
+  max_epochs: 30
+  early_stop_patience: 10
+
+output:
+  checkpoint_dir: runs/dc_rgcn_v1

@@ -1,0 +1,9 @@
+# Matched-protocol LaGAT (Hong et al. 2022) for the SOTA-positioning table:
+# replaces the cited paper number with our own re-run on the fixed split.
+# batch 256 already (accum 1 at effective batch 256); train to convergence.
+base: ../lagat_v1.yaml
+
+training:
+  effective_batch_size: 256
+  max_epochs: 150
+  early_stop_patience: 15

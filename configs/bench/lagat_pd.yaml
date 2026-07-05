@@ -1,0 +1,10 @@
+# LaGAT on the CANONICAL pair-disjoint BioSNAP split — second inductive control
+# baseline for the KnowDDI comparison (paper LaGAT TWOSIDES AUROC 0.8872).
+# Identical model/training to bench/lagat; only the split differs.
+base: lagat.yaml
+
+data:
+  split_mode: pair_disjoint
+
+output:
+  checkpoint_dir: runs/bench/lagat_pd

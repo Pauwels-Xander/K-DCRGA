@@ -1,0 +1,9 @@
+# Benchmark arm — K-DCRGA v5 encoder (attention + ontology) + DEDICOM decoder.
+# vs bench/decagon -> full encoder contribution; vs bench/kdcrga_v5 -> decoder.
+# Matched protocol: effective batch 256 (batch_size 128 -> accum 2), to convergence.
+base: ../kdcrga_dedicom_v1.yaml
+
+training:
+  effective_batch_size: 256
+  max_epochs: 150
+  early_stop_patience: 15

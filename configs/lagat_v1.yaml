@@ -1,0 +1,10 @@
+# LaGAT baseline (Hong et al. 2022) — partner-conditional attention + DistMult.
+base: base.yaml
+
+training:
+  max_epochs: 30
+  early_stop_patience: 10
+  batch_size: 256        # OOM-safe on 8 GB VRAM (LaGAT materialises neighbours)
+
+output:
+  checkpoint_dir: runs/lagat_v1

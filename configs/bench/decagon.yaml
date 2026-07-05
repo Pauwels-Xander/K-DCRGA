@@ -1,0 +1,10 @@
+# Benchmark arm — Decagon (plain R-GCN encoder + DEDICOM decoder).
+# Matched protocol: effective batch 256, trained to convergence (early stop on
+# val AUPRC). batch_size dropped to 256 so it matches (accum_steps -> 1).
+base: ../decagon_v1.yaml
+
+training:
+  batch_size: 256
+  effective_batch_size: 256
+  max_epochs: 150
+  early_stop_patience: 15

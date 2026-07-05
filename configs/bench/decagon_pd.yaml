@@ -1,0 +1,13 @@
+# Decagon (plain R-GCN + DEDICOM) on the CANONICAL pair-disjoint BioSNAP split —
+# the leak-free inductive CONTROL for the KnowDDI comparison. Identical
+# model/training to bench/decagon; only the split differs. Purpose: confirm OUR
+# Decagon, scored through the SAME common evaluator as K-DCRGA and KnowDDI, lands
+# at the paper's ~0.918 AUROC. If it does, K-DCRGA's 0.954 is real separation, not
+# a pipeline/benchmark artifact (and the RQ1 tie was a transductive-protocol effect).
+base: decagon.yaml
+
+data:
+  split_mode: pair_disjoint
+
+output:
+  checkpoint_dir: runs/bench/decagon_pd

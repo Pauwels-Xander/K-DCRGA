@@ -1,0 +1,12 @@
+# RQ3 ablation: full K-DCRGA minus the hierarchical aggregator (concat views).
+base: ../base.yaml
+
+model:
+  num_hops: 3
+  use_shared_view: true
+  use_hierarchical: false
+
+training:
+  max_epochs: 30
+  early_stop_patience: 10
+  batch_size: 128        # full 5-view KDCRGA OOMs at 256 on 8GB; 128 profiled safe (preflight 2026-06-08)

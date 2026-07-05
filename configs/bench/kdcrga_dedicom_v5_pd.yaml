@@ -1,0 +1,12 @@
+# K-DCRGA_DEDICOM v5 trained on the CANONICAL pair-disjoint BioSNAP split (the
+# standard inductive benchmark KnowDDI reports on: train/valid/test share no
+# drug-pair). Identical model/training to kdcrga_dedicom_v5; only the split differs.
+# Purpose: the leak-free, full-size Stream-F for the KnowDDI fusion comparison.
+# (kdcrga_dedicom_v5's random per-triple split leaks test positives into training.)
+base: kdcrga_dedicom_v5.yaml
+
+data:
+  split_mode: pair_disjoint
+
+output:
+  checkpoint_dir: runs/bench/kdcrga_dedicom_v5_pd

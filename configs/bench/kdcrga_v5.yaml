@@ -1,0 +1,9 @@
+# Benchmark arm — full K-DCRGA v5 (attention + ontology) with its shared-MLP
+# scorer. Matched protocol: effective batch 256 (batch_size 128 -> accum 2),
+# trained to convergence.
+base: ../kdcrga_v5.yaml
+
+training:
+  effective_batch_size: 256
+  max_epochs: 150
+  early_stop_patience: 15

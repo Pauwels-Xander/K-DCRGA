@@ -1,0 +1,84 @@
+# Secrets — never commit API keys / tokens
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Data (large, licence-restricted) — keep the dirs, ignore their contents
+data/raw/*
+data/processed/*
+data/ontology/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/ontology/.gitkeep
+
+# Licensed MedDRA distributions (MSSO) — never commit the raw term dictionaries
+data/MedDRA_*/
+data/MDB5*/
+
+# Large external DB dumps (e.g. DrugCentral pg_dump, ~4.7GB) — public but huge
+data/*.sql
+
+# MedDRA-derived outputs: regenerated locally via build_meddra_mapping.py from
+# committed code + data/meddra_overrides.csv + the licensed/public source data.
+# Kept out of git because they embed ~200 licensed MedDRA term names.
+docs/meddra_match_report.md
+# (data/processed/se_to_meddra.json already covered by data/processed/* above)
+
+# BioBERT node-embedding outputs: regenerated locally via build_node_embeddings.py.
+# Report embeds Hetionet-derived names; the .pt cache is covered by *.pt above.
+docs/node_embeddings_report.md
+
+# Experiment outputs
+runs/
+docs/figures/
+checkpoints/
+*.ckpt
+*.pt
+tb_logs/
+
+# Submission / staging archives (built by experiments/package_submission.py)
+kdcrga_submission.zip
+*.tar.gz
+
+# Vendored third-party source (cloned at setup time, see README)
+third_party/*
+!third_party/.gitkeep
+
+# Supervisor meeting transcripts — private, never commit
+transcript*.md
+docs/transcript*.md
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# LaTeX build artifacts — regenerated on every compile of docs/thesis.tex
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.toc
+*.synctex.gz
+docs/build.log
+
+# Claude Code scheduler lock
+.claude/scheduled_tasks.lock

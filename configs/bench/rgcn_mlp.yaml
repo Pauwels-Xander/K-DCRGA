@@ -1,0 +1,20 @@
+# 4th cell of the encoder x decoder 2x2: plain R-GCN encoder + shared-MLP scorer,
+# NO attention. Completes the factorial:
+#   vs kdcrga_v5 (attn + MLP)  -> the attention effect under the MLP decoder
+#   vs decagon  (R-GCN + DEDICOM) -> the decoder effect under the R-GCN encoder
+# With attention off the side effect enters via z_k concatenated to the pair
+# features [h_a, h_b, h_a*h_b, |h_a-h_b|, z_k] (the attention arms route z_k
+# through the encoder attention instead -- conditioning route differs, noted in
+# the thesis). No ontology. Matched protocol (effective batch 256, train to
+# convergence) so it is comparable to the other three cells.
+base: ../kdcrga_v4.yaml
+
+model:
+  use_attention: false
+  use_shared_view: false
+  use_hierarchical: false
+
+training:
+  effective_batch_size: 256
+  max_epochs: 150
+  early_stop_patience: 15

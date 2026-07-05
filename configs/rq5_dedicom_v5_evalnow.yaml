@@ -1,0 +1,8 @@
+# Eval-only pass: resume from runs/rq5/dedicom_v5/seed_0/last.pt with a max_epochs
+# below the already-completed epoch so train() skips training, loads best_state,
+# and the script runs the 3-arm zero-shot eval on the best checkpoint. One-off.
+base: rq5_dedicom_v5.yaml
+
+training:
+  max_epochs: 1
+  early_stop_patience: 1
